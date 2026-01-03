@@ -53,15 +53,3 @@ Built with vanilla HTML, CSS, and JavaScript, it features a highly polished "Gla
 ## 📱 Screenshots
 <img src="https://github.com/user-attachments/assets/4f38c403-e9fa-4527-a774-7542eba2e40a" alt="Simple Default Mode" width="150">
 <img src="https://github.com/user-attachments/assets/ff345db4-8c0d-4f09-93c1-cc63d1b7949f" alt="Scientific Mode" width="150">
-
-## 🛠️ Installation & Setup
-
-ConCal is a static web application. It does not require a build process (Webpack/Vite) to run locally, though it relies on specific directory structures for fonts.
-
-### Prerequisites
-To get the full styling experience, you need the font files referenced in the CSS.
-
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/yourusername/ConCal.git](https://github.com/yourusername/ConCal.git)
-cd ConCal
