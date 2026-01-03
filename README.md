@@ -1,7 +1,7 @@
 # ConCal v2
 
 <div align="center">
-  <img src="ConCal_logo.jpg" alt="ConCal Logo" width="120" height="120">
+  <img src="ConCal_logo.png" alt="ConCal Logo" width="120" height="120">
   <br>
   <strong>Calculator and Convertor, Simplified!</strong>
 </div>
