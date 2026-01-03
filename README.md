@@ -51,12 +51,8 @@ Built with vanilla HTML, CSS, and JavaScript, it features a highly polished "Gla
 * **Haptics:** Integrated vibration feedback (Web Vibration API & Capacitor Haptics support).
 
 ## 📱 Screenshots
-
-> *Add screenshots of your app here. Recommended: One showing the "Graphite" theme, one showing "Scientific Mode", and one showing the "Settings Modal".*
-
-| Graphite Theme | Scientific Mode | Settings & Themes |
-|:---:|:---:|:---:|
-| ![Graphite](path/to/screenshot1.png) | ![Scientific](path/to/screenshot2.png) | ![Settings](path/to/screenshot3.png) |
+<img src="https://github.com/user-attachments/assets/4f38c403-e9fa-4527-a774-7542eba2e40a" alt="Simple Default Mode" width="150">
+<img src="https://github.com/user-attachments/assets/ff345db4-8c0d-4f09-93c1-cc63d1b7949f" alt="Scientific Mode" width="150">
 
 ## 🛠️ Installation & Setup
 
