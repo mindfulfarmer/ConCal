@@ -6,15 +6,6 @@
   <strong>Calculator and Convertor, Simplified!</strong>
 </div>
 
-<br>
-
-<div align="center">
-  <a href="#features">Features</a> •
-  <a href="#demo">Demo</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#customization">Customization</a>
-</div>
-
 ---
 
 ## 📖 Overview
