@@ -1,12 +1,11 @@
-# ConCal v2
-
 <div align="center">
+  <h1>ConCal v2 </h1>
+  <br>
   <img src="ConCal_logo.png" alt="ConCal Logo" width="120" height="120">
+  <br>
   <br>
   <strong>Calculator and Convertor, Simplified!</strong>
 </div>
-
----
 
 ## 📖 Overview
 
