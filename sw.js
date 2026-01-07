@@ -1,9 +1,10 @@
-const CACHE_NAME = 'concal-v1';
+const CACHE_NAME = 'concal-v2';
 const ASSETS = [
   './',
   './index.html',
   './ConCal_logo.jpg',
-  // Include your fonts here to ensure they work offline
+  './icon-192.png',
+  './icon-512.png',
   './fonts/Inter-Light.woff2',
   './fonts/Inter-Regular.woff2',
   './fonts/Inter-SemiBold.woff2',
@@ -45,3 +46,4 @@ self.addEventListener('fetch', (e) => {
     })
   );
 });
+
