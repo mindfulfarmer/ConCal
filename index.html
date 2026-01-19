@@ -578,7 +578,7 @@
         .calc-row {
             flex: 1; 
             flex-shrink: 0; 
-            min-height: 120px; 
+            min-height: 150px; 
             display: flex; flex-direction: column; justify-content: flex-end;
             text-align: right; position: relative;
             transition: flex 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -632,8 +632,8 @@
 
         /* --- KEYPADS --- */
         .keypad-container {
-            flex: 0 0 60%; /* STRICT 60% HEIGHT */
-            height: 60%; 
+            flex: 0 0 55%; 
+            height: 55%; 
             background: var(--bg-surface);
             border-top: none;
             padding: 12px; 
@@ -1535,7 +1535,8 @@
             
             let disp = valStr;
             
-            disp = disp.replace(/\//g, '÷'); 
+            // UPDATED: Replace division slash with division sign AND asterisk with multiplication sign
+            disp = disp.replace(/\//g, '÷').replace(/\*/g, '×'); 
             
             disp = disp.replace(/\^(\d+)/g, '<sup>$1</sup>');
             
