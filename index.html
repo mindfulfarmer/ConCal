@@ -266,8 +266,10 @@
 
         .conv-val {
             font-size: 25px; text-align: right; width: 100%; margin-bottom: 0px; font-weight: 400; 
-            font-family: var(--font-nums); word-wrap: normal; white-space: nowrap; /* OPTIMIZED: No wrap */
-            line-height: 1.1; letter-spacing: 0px; max-height: 50px; overflow: hidden;
+            font-family: var(--font-nums); 
+            white-space: normal; word-break: break-all; /* CHANGED: Allow Wrap */
+            line-height: 1.1; letter-spacing: 0px; 
+            /* REMOVED max-height and overflow hidden */
             font-variant-ligatures: common-ligatures; background: transparent; padding: 0; border-radius: 0;
         }
         
@@ -299,8 +301,9 @@
         body:not(.mode-expanded) .calc-row { flex: 1; }
         
         .calc-val {
-            font-size: 72px; color: var(--text-main); font-family: var(--font-nums) !important; font-weight: 500;
-            line-height: 1.1; word-wrap: normal; white-space: nowrap; /* OPTIMIZED: No wrap */
+            font-size: 90px; color: var(--text-main); font-family: var(--font-nums) !important; font-weight: 500;
+            line-height: 1.1; 
+            white-space: normal; word-break: break-all; /* CHANGED: Allow Wrap */
             letter-spacing: 0px; text-shadow: none; font-variant-ligatures: common-ligatures;
             transition: font-size 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -977,8 +980,8 @@
             
             // OPTIMIZATION: Instant resize
             // CHANGED: If expanded is false (collapsed), max size is 120px. If expanded, 72px.
-            const maxFontSize = state.expanded ? 72 : 120; 
-            autoResizeText(els.calc, els.calcContainer, maxFontSize, 35);
+            const maxFontSize = state.expanded ? 72 : 110; 
+            // autoResizeText(els.calc, els.calcContainer, maxFontSize, 35);
             
             if (state.expr && state.expr.length > 0) els.histBtn.classList.add('hidden'); else els.histBtn.classList.remove('hidden');
         }
@@ -1000,7 +1003,7 @@
             const resStr = parseFloat(res.toFixed(state.decimals)).toString();
             els.res.innerHTML = formatVal(resStr, true);
             // OPTIMIZATION: Instant resize
-            autoResizeSynced(els.mirror, els.res, 25, 14);
+            // autoResizeSynced(els.mirror, els.res, 25, 14);
         }
 
         els.catTrigger.onclick = () => openPicker('cat');
