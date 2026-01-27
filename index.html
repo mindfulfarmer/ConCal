@@ -299,7 +299,7 @@
         body:not(.mode-expanded) .calc-row { flex: 1; }
         
         .calc-val {
-            font-size: 72px; color: var(--text-main); font-family: var(--font-nums) !important; font-weight: 600;
+            font-size: 72px; color: var(--text-main); font-family: var(--font-nums) !important; font-weight: 700;
             line-height: 1.1; word-wrap: normal; white-space: nowrap; /* OPTIMIZED: No wrap */
             letter-spacing: 0px; text-shadow: none; font-variant-ligatures: common-ligatures;
         }
@@ -954,10 +954,15 @@
         function updateCalcDisplay() {
             const isResult = (!state.expr && state.committedVal !== 0) || (state.expr === String(state.committedVal));
             const raw = state.expr || String(parseFloat(state.committedVal.toFixed(state.decimals)));
+            
             els.formula.textContent = state.formula.replace(/\*/g, '×').replace(/\//g, '÷').replace(/\^/g, '^');
             els.calc.innerHTML = formatVal(raw, isResult);
+            
             // OPTIMIZATION: Instant resize
-            autoResizeText(els.calc, els.calcContainer, 72, 35);
+            // CHANGED: If expanded is false (collapsed), max size is 120px. If expanded, 72px.
+            const maxFontSize = state.expanded ? 72 : 120; 
+            autoResizeText(els.calc, els.calcContainer, maxFontSize, 35);
+            
             if (state.expr && state.expr.length > 0) els.histBtn.classList.add('hidden'); else els.histBtn.classList.remove('hidden');
         }
 
