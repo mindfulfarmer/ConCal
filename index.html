@@ -303,9 +303,12 @@
         .calc-val {
             font-size: 90px; color: var(--text-main); font-family: var(--font-nums) !important; font-weight: 500;
             line-height: 1.1; 
-            white-space: normal; word-break: break-all; /* CHANGED: Allow Wrap */
+            white-space: normal; word-break: break-all; 
             letter-spacing: 0px; text-shadow: none; font-variant-ligatures: common-ligatures;
-            transition: font-size 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Removed transition to allow instant JS resizing without visual jumping */
+            transition: color 0.2s; 
+            /* Ensure it doesn't push bounds */
+            max-width: 100%;
         }
 
         .calc-formula {
@@ -900,10 +903,22 @@
             return Math.max(newSz, minSz);
         }
 
+        // REPLACEMENT: Height-aware resizing for multi-line support
         function autoResizeText(el, container, maxSz, minSz) {
-            const style = window.getComputedStyle(el);
-            const size = getOptimalFontSize(el.textContent, style, container.clientWidth, maxSz, minSz);
+            let size = maxSz;
             el.style.fontSize = size + 'px';
+            
+            // We loop down until the content fits inside the container height.
+            // el.scrollHeight > container.clientHeight detects if text is taller than the box.
+            while (size > minSz) {
+                // Check for vertical overflow (Height) OR Horizontal overflow (single long word)
+                if (el.scrollHeight > container.clientHeight || el.scrollWidth > container.clientWidth) {
+                    size -= 4; // Decrease font size by 4px steps
+                    el.style.fontSize = size + 'px';
+                } else {
+                    break; // It fits!
+                }
+            }
         }
         
         function autoResizeSynced(el1, el2, maxSz, minSz) {
@@ -978,10 +993,12 @@
             els.formula.textContent = state.formula.replace(/\*/g, '×').replace(/\//g, '÷').replace(/\^/g, '^');
             els.calc.innerHTML = formatVal(raw, isResult);
             
-            // OPTIMIZATION: Instant resize
-            // CHANGED: If expanded is false (collapsed), max size is 120px. If expanded, 72px.
-            const maxFontSize = state.expanded ? 72 : 110; 
-            // autoResizeText(els.calc, els.calcContainer, maxFontSize, 35);
+            // logic: determine max font based on mode
+            const maxFontSize = state.expanded ? 70 : 100; 
+            
+            // EXECUTE RESIZE:
+            // We set minSize to 20px so it can get quite small to fit multiple lines
+            autoResizeText(els.calc, els.calcContainer, maxFontSize, 20);
             
             if (state.expr && state.expr.length > 0) els.histBtn.classList.add('hidden'); else els.histBtn.classList.remove('hidden');
         }
